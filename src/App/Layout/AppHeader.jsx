@@ -12,7 +12,7 @@ export function AppHeader() {
     <header>
       {/* // component react  */}
       <PomeranianLogo />
-      <HeaderInput />
+      {/* <HeaderInput /> */}
       <HeaderMenu />
     </header>
   );
