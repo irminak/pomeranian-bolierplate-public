@@ -41,6 +41,7 @@ div.profiledata {
   color: #999;
   font-weight: 400;
   /* background-color: blue; */
+
 }
 .profilepanel svg:nth-last-of-type(1) {
   transform: scale(1.5);
