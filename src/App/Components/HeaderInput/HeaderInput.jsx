@@ -4,7 +4,8 @@ import { SearchIcon } from '../Icons/SearchIcon';
 const HeaderInput = () => {
   return (
     <div class="input-container">
-      <input type="text" class="image-input" placeholder="Search" />
+      <SearchIcon />
+      <input type="text" placeholder="Search" />
     </div>
   );
 };
