@@ -13,6 +13,7 @@ import { Blog } from './App/Blog';
 import { FAQ } from './App/faq';
 import { TechStack } from './App/TechStack';
 import { BlogExercises } from './App/Blog/BlogExercises/index';
+import BasicCard from './App/MaterialU';
 
 export function App() {
   return (
@@ -30,6 +31,7 @@ export function App() {
           <Route path="faq/*" element={<FAQ />} />
           <Route path="techstack/*" element={<TechStack />} />
           <Route path="blog-exercises/*" element={<BlogExercises />} />
+          <Route path="material-ui/*" element={<BasicCard />} />
         </Route>
       </Routes>
     </BrowserRouter>
