@@ -60,6 +60,7 @@ export function ExerciseJsArrayBasics() {
   );
 }
 
+
 /*
 1. continue - pomija iteracje, ale pętla wykonuje się dalej
 2. break - przerywa pętlę
@@ -111,3 +112,4 @@ export const ArrayBasics = () => {
 //   }
 //   return accumulator;
 // }, []);
+
