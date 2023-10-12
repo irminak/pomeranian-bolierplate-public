@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 // Arrow function
@@ -174,6 +175,21 @@ export const JsExtension = () => {
     });
   };
   console.log('sumOfParams: ' + sumOfParams(2, 34, 6, 7));
+
+  const zliczWystapienia = (arg) => {
+    // if (typeof arg !== 'number') return 'złe wejście';
+    return (...arr) => {
+      if (typeof arg !== 'number') return 'złe wejście';
+      // console.log(arr, 'arr');
+      const newArr = arr.filter((el) => el === arg);
+      // console.log(newArr, 'newarr');
+      return newArr.length;
+    };
+  };
+  console.log(
+    'zliczWystapienia: ' +
+      zliczWystapienia(1)(1, 1, 5, 6, 7, 'hello', 1, 1, 'jaa')
+  );
 
   return <div>Js rozszerzenie wiedzy</div>;
 };
