@@ -11,7 +11,7 @@ export const Timer = () => {
     if (!start) return;
     const interval = setInterval(() => {
       setTime(time + 1);
-    }, 1000);
+    }, 10);
     return () => {
       clearInterval(interval);
     };
