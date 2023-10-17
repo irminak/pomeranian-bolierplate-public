@@ -6,6 +6,15 @@ import { blockRouterMetaData as blockRouterMetaDataJsFunction1 } from './Exercis
 import { blockRouterMetaData as blockRouterMetaDataEmptyValuesAndStrings } from './EmptyValueAndStrings/router-data';
 import { blockRouterMetaData as blockRouterMetaDataStringMethods } from './StringMethods/router-data';
 import { blockRouterMetaData as blockRouterMetaDataExerciseJsArrayBasics } from './ExerciseJsArrayBasics/router-data';
+import { blockRouterMetaData as blockRouterMetaDataObjectsAndDate } from './Objects/router-data';
+import { blockRouterMetaData as blockRouterMetaDataJsDateTime } from './JsDateTime/router-data';
+import { blockRouterMetaData as blockRouterMetaDataJsExtension } from './JsExtension/router-data';
+import { blockRouterMetaData as blockRouterMetaDataJsSetTimeout } from './JsSetTimeout/router-data';
+import { blockRouterMetaData as blockRouterMetaDataJsSetInterval } from './JsSetInterval/router-data';
+import { blockRouterMetaData as blockRouterMetaDataVanishString } from './VanishString/router-data';
+import { blockRouterMetaData as blockRouterMetaDataTimer } from './Timer/router-data';
+import { blockRouterMetaData as blockRouterMetaDataJsSlidingBanner } from './JsSlidingBanner/router-data';
+import { blockRouterMetaData as blockRouterMetaDataJsAnimation } from './JsAnimation/router-data';
 
 import { blockRouterMetaData as blockRouterMetaDataArrayBasics } from './ArrayBasics/router-data';
 =======
@@ -19,7 +28,19 @@ export const blockRouterMetaData = [
   blockRouterMetaDataStringMethods,
   blockRouterMetaDataExerciseJsArrayBasics,
 
+
   blockRouterMetaDataArrayBasics,
+
+
+  blockRouterMetaDataObjectsAndDate,
+  blockRouterMetaDataJsDateTime,
+  blockRouterMetaDataJsExtension,
+  blockRouterMetaDataJsSetTimeout,
+  blockRouterMetaDataJsSetInterval,
+  blockRouterMetaDataVanishString,
+  blockRouterMetaDataTimer,
+  blockRouterMetaDataJsSlidingBanner,
+  blockRouterMetaDataJsAnimation,
 
 ];
 export const blockRouterData = getParsedRouterDataList(blockRouterMetaData);
