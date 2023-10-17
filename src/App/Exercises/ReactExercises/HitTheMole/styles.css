@@ -26,8 +26,12 @@ div.container_row {
   margin-bottom: 20px;
   /* background-color: aqua; */
 }
+div.content {
+  display: flex;
+}
 
 .button_mole {
+  margin-right: 20px;
   padding: 12px 20px;
   align-items: center;
   font-family: Poppins, sans-serif;
@@ -37,6 +41,9 @@ div.container_row {
   margin-bottom: 0;
   background-color: #23213d;
   border: none;
+}
+.current {
+  background-color: #e12b1b;
 }
 .score {
   background-color: #ebebeb;

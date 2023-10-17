@@ -30,6 +30,19 @@ const fields = [
 
 const getRandomInt = (max) => Math.floor(Math.random() * max) + 1;
 
+const getRandomMoleFields = (numberOfMoles) => {
+  const moleFields = [];
+
+  while (moleFields.length < numberOfMoles) {
+    const randomField = getRandomInt(fields.length);
+
+    if (!moleFields.includes(randomField)) {
+      moleFields.push(randomField);
+    }
+  }
+  return moleFields;
+};
+
 const interval_time = 1000;
 
 const game_time = 60;
@@ -37,7 +50,7 @@ const game_time = 60;
 export const HitTheMole = () => {
   const [gameFields, setGameFields] = useState(fields);
 
-  const [moleFieldId, setMoleFieldId] = useState(getRandomInt(10));
+  const [moleFieldIds, setMoleFieldIds] = useState(getRandomMoleFields(1));
 
   const [initialTime, setInitialTime] = useState(game_time);
 
@@ -47,29 +60,32 @@ export const HitTheMole = () => {
 
   const [isGameEnded, setIsGameEnded] = useState(false);
 
-  const [previousMoleFieldId, setPreviousMoleFieldId] = useState(null);
+  const [previousMoleFieldIds, setPreviousMoleFieldIds] = useState([]);
 
   const [score, setScore] = useState(0);
 
   const [intervalId, setIntervalId] = useState(null);
 
+  const [numberOfMoles, setNumberOfMoles] = useState(1);
+
   const handleStartGame = () => {
     setIsGameStarted(true);
-
-    setMoleFieldId(getRandomInt(10));
+    setTime(initialTime);
+    setMoleFieldIds(getRandomMoleFields(numberOfMoles));
 
     const intervalId = setInterval(() => {
-      setMoleFieldId(getRandomInt(10));
+      setMoleFieldIds(getRandomMoleFields(numberOfMoles));
     }, interval_time);
 
     setIntervalId(intervalId);
 
     setScore(0);
-    setTime(game_time);
+    setIsGameEnded(false);
   };
 
   const handleStopGame = () => {
     setIsGameStarted(false);
+    setIsGameEnded(true);
 
     clearInterval(intervalId);
   };
@@ -89,11 +105,7 @@ export const HitTheMole = () => {
   };
 
   const scoreUpdate = (isMolePresent) => {
-    if (isMolePresent) {
-      setScore(score + 1);
-    } else {
-      setScore(score - 1);
-    }
+    isMolePresent ? setScore(score + 1) : setScore(score - 1);
   };
 
   const handleClickField = (clickedField, isMolePresent) => {
@@ -111,12 +123,16 @@ export const HitTheMole = () => {
     scoreUpdate(isMolePresent);
 
     if (isMolePresent) {
-      setPreviousMoleFieldId(moleFieldId);
-      setMoleFieldId(getRandomInt(10));
+      setPreviousMoleFieldIds(moleFieldIds);
+      // Opóźnienie zeby zielone pole pokrylo sie z krecikiem
+      setTimeout(() => {
+        setMoleFieldIds(getRandomMoleFields(numberOfMoles));
+      }, 50);
+      // setMoleFieldId(getRandomInt(10));
 
       clearInterval(intervalId);
       const newIntervalId = setInterval(() => {
-        setMoleFieldId(getRandomInt(10));
+        setMoleFieldIds(getRandomMoleFields(numberOfMoles));
       }, interval_time);
       setIntervalId(newIntervalId);
     }
@@ -135,6 +151,7 @@ export const HitTheMole = () => {
   useEffect(() => {
     if (time === 0) {
       handleStopGame();
+      setIsGameEnded(true);
     }
   }, [time]);
 
@@ -143,10 +160,18 @@ export const HitTheMole = () => {
       <NavLink to="/exercise" className="backBtn">
         {'<'}Kret
       </NavLink>
-      <h2 className="mole">
+      {isGameEnded ? (
+        <h2 className="mole">Gratulacje! Twój wynik to: {score}</h2>
+      ) : (
+        <h2 className="mole">
+          Gra polegająca na podążaniu za krecikiem i trafieniu na kwadrat, w
+          którym się pojawił.
+        </h2>
+      )}
+      {/* <h2 className="mole">
         Gra polegająca na podążaniu za krecikiem i trafieniu na kwadrat, w
         którym się pojawił.
-      </h2>
+      </h2> */}
 
       {isGameStarted ? (
         <div>
@@ -192,9 +217,11 @@ export const HitTheMole = () => {
 
           <div className="game_field">
             {gameFields.map((field) => {
-              const isMolePresent = field.id === moleFieldId;
+              const isMolePresent = moleFieldIds.includes(field.id);
 
-              const isPreviousMolePresent = field.id === previousMoleFieldId;
+              const isPreviousMolePresent = previousMoleFieldIds.includes(
+                field.id
+              );
               const isClickedWithMole =
                 isPreviousMolePresent && field.hasClicked ? 'green' : '';
 
@@ -213,14 +240,42 @@ export const HitTheMole = () => {
           </div>
         </div>
       ) : (
-        <div className="container_table">
+        <div>
+          {/* {isGameEnded && (
+            <div className="congratulations">
+              <h3>Gratulację! Twój wynik to: {score}</h3>
+            </div>
+          )} */}
           {/* CZAS gry */}
 
           <div className="container_row">
             <div className="title_mole">Czas gry</div>
 
             <div className="content">
-              <button className="button_mole">1 minuta</button>
+              <button
+                onClick={() => setInitialTime(60)}
+                className={
+                  initialTime === 60 ? 'current button_mole' : 'button_mole'
+                }
+              >
+                1 minuta
+              </button>
+              <button
+                onClick={() => setInitialTime(120)}
+                className={
+                  initialTime === 120 ? 'current button_mole' : 'button_mole'
+                }
+              >
+                2 minuty
+              </button>
+              <button
+                onClick={() => setInitialTime(180)}
+                className={
+                  initialTime === 180 ? 'current button_mole' : 'button_mole'
+                }
+              >
+                3 minuty
+              </button>
             </div>
           </div>
 
@@ -230,7 +285,30 @@ export const HitTheMole = () => {
             <div className="title_mole">Liczba kretów</div>
 
             <div className="content">
-              <button className="button_mole">1 kret</button>
+              <button
+                onClick={() => setNumberOfMoles(1)}
+                className={
+                  numberOfMoles === 1 ? 'current button_mole' : 'button_mole'
+                }
+              >
+                1 kret
+              </button>
+              <button
+                onClick={() => setNumberOfMoles(2)}
+                className={
+                  numberOfMoles === 2 ? 'current button_mole' : 'button_mole'
+                }
+              >
+                2 krety
+              </button>
+              <button
+                onClick={() => setNumberOfMoles(3)}
+                className={
+                  numberOfMoles === 3 ? 'current button_mole' : 'button_mole'
+                }
+              >
+                3 krety
+              </button>
             </div>
           </div>
 
