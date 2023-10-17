@@ -16,6 +16,10 @@ import { blockRouterMetaData as blockRouterMetaDataTimer } from './Timer/router-
 import { blockRouterMetaData as blockRouterMetaDataJsSlidingBanner } from './JsSlidingBanner/router-data';
 import { blockRouterMetaData as blockRouterMetaDataJsAnimation } from './JsAnimation/router-data';
 
+import { blockRouterMetaData as blockRouterMetaDataArrayBasics } from './ArrayBasics/router-data';
+=======
+
+
 export const blockRouterMetaData = [
   blockRouterMetaDataJsVariables1,
   blockRouterMetaDataJsVariables2,
@@ -23,6 +27,11 @@ export const blockRouterMetaData = [
   blockRouterMetaDataEmptyValuesAndStrings,
   blockRouterMetaDataStringMethods,
   blockRouterMetaDataExerciseJsArrayBasics,
+
+
+  blockRouterMetaDataArrayBasics,
+
+
   blockRouterMetaDataObjectsAndDate,
   blockRouterMetaDataJsDateTime,
   blockRouterMetaDataJsExtension,
@@ -32,5 +41,6 @@ export const blockRouterMetaData = [
   blockRouterMetaDataTimer,
   blockRouterMetaDataJsSlidingBanner,
   blockRouterMetaDataJsAnimation,
+
 ];
 export const blockRouterData = getParsedRouterDataList(blockRouterMetaData);
