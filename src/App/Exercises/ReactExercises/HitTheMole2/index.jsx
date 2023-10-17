@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import molepng from '../../../Images/mole.png';
-// import './styles.css';
+
+import './styles.css';
+
 
 const fields = [
   { id: 1, hasClicked: false },
@@ -16,6 +18,9 @@ const fields = [
 ];
 
 const interval_time = 1000;
+
+const game_time = 60;
+
 const randomField = (max) => Math.floor(Math.random() * max) + 1;
 
 export function HitTheMole2() {
@@ -24,6 +29,10 @@ export function HitTheMole2() {
   const [gameFields, setGameFields] = useState(fields);
   const [moleFieldId, setMoleFieldId] = useState(randomField(fields.length));
   const [intervalId, setIntervalId] = useState(null);
+
+  const [time, setTime] = useState(game_time);
+  const [score, setScore] = useState(0);
+
 
   const handleStartGame = () => {
     setIsStarted(true);
@@ -39,7 +48,18 @@ export function HitTheMole2() {
     setIsStarted(false);
     clearInterval(intervalId);
   };
-  const handleClick = () => {};
+
+  const handleClick = (clickedField, isMolePresent) => {
+    setGameFields(
+      gameFields.map((field) => {
+        return {
+          ...field,
+          hasClicked: field.id === clickedField.id,
+        };
+      })
+    );
+  };
+
 
   return (
     <div>
@@ -51,11 +71,13 @@ export function HitTheMole2() {
         <div>
           <div>
             <p>Czas do końca</p>
-            <button></button>
+
+            <button>{time}</button>
           </div>
           <div>
             <p>Wynik</p>
-            <button></button>
+            <button>{score}</button>
+
           </div>
           <div>
             <p>Przyciski sterujące</p>
@@ -66,7 +88,14 @@ export function HitTheMole2() {
               const isMolePresent = field.id === moleFieldId;
 
               return (
-                <div onClick={handleClick} className="field">
+
+                <div
+                  onClick={() => {
+                    handleClick(isMolePresent, field);
+                  }}
+                  className="pole"
+                >
+
                   {isMolePresent && <img src={molepng} alt="mole" />}
                 </div>
               );

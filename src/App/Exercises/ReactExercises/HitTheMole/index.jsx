@@ -101,7 +101,6 @@ export const HitTheMole = () => {
       gameFields.map((field) => {
         return {
           ...field,
-
           hasClicked: field.id === clickedField.id,
         };
       })
