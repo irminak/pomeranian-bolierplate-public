@@ -6,7 +6,7 @@ import { EventsMetaData } from './Events/router-data';
 import { blockRouterMetaData as blockRouterMetaDataHitTheMole } from './HitTheMole/router-data';
 
 import { blockRouterMetaData as blockRouterMetaDataHitTheMole2 } from './HitTheMole2/router-data';
-
+import { blockRouterMetaData as blockRouterMetaDataMemoGame } from './MemoGame/router-data';
 
 export const blockRouterMetaData = [
   SubRouteExampleMetaData,
@@ -14,6 +14,6 @@ export const blockRouterMetaData = [
   blockRouterMetaDataHitTheMole,
 
   blockRouterMetaDataHitTheMole2,
-
+  blockRouterMetaDataMemoGame,
 ];
 export const blockRouterData = getParsedRouterDataList(blockRouterMetaData);
