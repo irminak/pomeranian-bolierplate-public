@@ -23,8 +23,8 @@ export const MemoGame = () => {
   const [score, setScore] = useState(0);
   const [isGameEnded, setIsGameEnded] = useState(false);
   const [gameCards, setGameCards] = useState([]);
-  const [firstID, setFirstID] = useState('');
-  const [secondID, setSecondID] = useState('');
+  const [firstKeyID, setFirstKeyID] = useState('');
+  const [secondKeyID, setSecondKeyID] = useState('');
 
   const handleStartGame = () => {
     setIsGameStarted(true);
@@ -36,8 +36,8 @@ export const MemoGame = () => {
     setIsGameStarted(false);
     setIsGameEnded(true);
 
-    setFirstID('');
-    setSecondID('');
+    setFirstKeyID('');
+    setSecondKeyID('');
   };
 
   function shuffleArray(s) {
@@ -51,47 +51,47 @@ export const MemoGame = () => {
   const cardsGenerator = (num) => {
     const newArray = [];
     for (let i = 0; i < num / 2; i++) {
-      newArray.push({ id: i, key: keys[i], isDone: false });
-      newArray.push({ id: 10 + i, key: keys[i], isDone: false });
+      newArray.push({ id: i, key: keys[i], keyID: [i], isDone: false });
+      newArray.push({ id: 10 + i, key: keys[i], keyID: [i], isDone: false });
     }
     const shuffleCards = shuffleArray(newArray);
     setGameCards(shuffleCards);
   };
 
-  const handleClick = (clickedCard) => {
-    if (firstID === '') {
-      setFirstID(clickedCard.id);
+  const handleClick = (clickedCard, counter) => {
+    if (firstKeyID === '') {
+      setFirstKeyID(clickedCard.keyID);
       return;
     }
-    if (clickedCard.id === firstID) return;
-    setSecondID(clickedCard.id);
-
-    if (firstID + 10 === clickedCard.id || firstID === clickedCard.id + 10) {
-      // clickedCard.isDone = firstID === clickedCard.id;
-      // clickedCard.isDone = secondID === clickedCard.id;
-      setGameCards(
-        gameCards.map((card) => {
-          return {
-            ...card,
-            isDone: card.id === clickedCard.id,
-          };
-        })
-      );
-      console.log(gameCards);
+    if (clickedCard.id !== firstKeyID) {
+      setSecondKeyID(clickedCard.keyID);
+      return;
     }
-
-    // if (firstID + 10 !== clickedCard.id || firstID !== clickedCard.id + 10) {
-    //   setTimeout(() => {
-    //     setFirstID('');
-    //     setSecondID('');
-    //   }, 300);
-    // } else if (
-    //   firstID + 10 === clickedCard.id ||
-    //   firstID === clickedCard.id + 10
-    // ) {
-    //   console.log('sukces');
-    // }
   };
+
+  useEffect(() => {
+    // console.log(firstKeyID, secondKeyID);
+    const newCards = [...gameCards];
+    newCards.map((card) => {
+      return {
+        ...card,
+        isDone: true,
+      };
+
+      // return card;
+    });
+    console.log(gameCards);
+    setGameCards(newCards);
+    // console.log(gameCards);
+
+    if (firstKeyID !== secondKeyID) {
+      setTimeout(() => {
+        setFirstKeyID('');
+        setSecondKeyID('');
+      }, 300);
+    }
+  }, [secondKeyID]);
+
   useEffect(() => {
     if (isGameStarted) {
       const intervalId = setInterval(() => {
@@ -158,7 +158,10 @@ export const MemoGame = () => {
               return (
                 <div onClick={() => handleClick(el)} className="onecard">
                   <span>
-                    {(firstID === el.id || secondID === el.id) && el.key}
+                    {(firstKeyID === el.keyID ||
+                      secondKeyID === el.keyID ||
+                      el.isDone === true) &&
+                      el.key}
                   </span>
                 </div>
               );
