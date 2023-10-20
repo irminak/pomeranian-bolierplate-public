@@ -23,6 +23,8 @@ export const MemoGame = () => {
   const [score, setScore] = useState(0);
   const [isGameEnded, setIsGameEnded] = useState(false);
   const [gameCards, setGameCards] = useState([]);
+  const [firstID, setFirstID] = useState('');
+  const [secondID, setSecondID] = useState('');
 
   const handleStartGame = () => {
     setIsGameStarted(true);
@@ -33,7 +35,9 @@ export const MemoGame = () => {
   const handleStopGame = () => {
     setIsGameStarted(false);
     setIsGameEnded(true);
-    // clearInterval(intervalId);
+
+    setFirstID('');
+    setSecondID('');
   };
 
   function shuffleArray(s) {
@@ -47,14 +51,47 @@ export const MemoGame = () => {
   const cardsGenerator = (num) => {
     const newArray = [];
     for (let i = 0; i < num / 2; i++) {
-      newArray.push({ id: i, key: keys[i] });
-      newArray.push({ id: 10 + i, key: keys[i] });
+      newArray.push({ id: i, key: keys[i], isDone: false });
+      newArray.push({ id: 10 + i, key: keys[i], isDone: false });
     }
     const shuffleCards = shuffleArray(newArray);
     setGameCards(shuffleCards);
-    // console.log(gameCards);
   };
 
+  const handleClick = (clickedCard) => {
+    if (firstID === '') {
+      setFirstID(clickedCard.id);
+      return;
+    }
+    if (clickedCard.id === firstID) return;
+    setSecondID(clickedCard.id);
+
+    if (firstID + 10 === clickedCard.id || firstID === clickedCard.id + 10) {
+      // clickedCard.isDone = firstID === clickedCard.id;
+      // clickedCard.isDone = secondID === clickedCard.id;
+      setGameCards(
+        gameCards.map((card) => {
+          return {
+            ...card,
+            isDone: card.id === clickedCard.id,
+          };
+        })
+      );
+      console.log(gameCards);
+    }
+
+    // if (firstID + 10 !== clickedCard.id || firstID !== clickedCard.id + 10) {
+    //   setTimeout(() => {
+    //     setFirstID('');
+    //     setSecondID('');
+    //   }, 300);
+    // } else if (
+    //   firstID + 10 === clickedCard.id ||
+    //   firstID === clickedCard.id + 10
+    // ) {
+    //   console.log('sukces');
+    // }
+  };
   useEffect(() => {
     if (isGameStarted) {
       const intervalId = setInterval(() => {
@@ -118,7 +155,13 @@ export const MemoGame = () => {
           </div>
           <div className="cardsplace">
             {gameCards.map((el) => {
-              return <div className="onecard"></div>;
+              return (
+                <div onClick={() => handleClick(el)} className="onecard">
+                  <span>
+                    {(firstID === el.id || secondID === el.id) && el.key}
+                  </span>
+                </div>
+              );
             })}
           </div>
         </div>
