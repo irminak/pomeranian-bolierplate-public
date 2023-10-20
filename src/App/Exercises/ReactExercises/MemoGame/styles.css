@@ -60,7 +60,9 @@ div.content {
 .cardsplace {
   display: flex;
   flex-wrap: wrap;
+
   width: 60%;
+
   margin: 50px auto;
 }
 .onecard {
@@ -93,6 +95,7 @@ div.content {
   -webkit-box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
   -moz-box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
   box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+
 }
 .current {
   background-color: #e12b1b;

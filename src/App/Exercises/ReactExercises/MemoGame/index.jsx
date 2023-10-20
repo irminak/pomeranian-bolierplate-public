@@ -26,6 +26,7 @@ export const MemoGame = () => {
   const [firstKeyID, setFirstKeyID] = useState('');
   const [secondKeyID, setSecondKeyID] = useState('');
 
+
   const handleStartGame = () => {
     setIsGameStarted(true);
     setTime(game_time);
@@ -36,8 +37,10 @@ export const MemoGame = () => {
     setIsGameStarted(false);
     setIsGameEnded(true);
 
+
     setFirstKeyID('');
     setSecondKeyID('');
+
   };
 
   function shuffleArray(s) {
@@ -51,6 +54,7 @@ export const MemoGame = () => {
   const cardsGenerator = (num) => {
     const newArray = [];
     for (let i = 0; i < num / 2; i++) {
+
       newArray.push({ id: i, key: keys[i], keyID: [i], isDone: false });
       newArray.push({ id: 10 + i, key: keys[i], keyID: [i], isDone: false });
     }
@@ -91,6 +95,7 @@ export const MemoGame = () => {
       }, 300);
     }
   }, [secondKeyID]);
+
 
   useEffect(() => {
     if (isGameStarted) {
@@ -155,6 +160,7 @@ export const MemoGame = () => {
           </div>
           <div className="cardsplace">
             {gameCards.map((el) => {
+
               return (
                 <div onClick={() => handleClick(el)} className="onecard">
                   <span>
@@ -165,6 +171,7 @@ export const MemoGame = () => {
                   </span>
                 </div>
               );
+
             })}
           </div>
         </div>
