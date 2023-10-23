@@ -42,6 +42,7 @@ div.content {
   background-color: #23213d;
   border: none;
 }
+
 .score {
   background-color: #ebebeb;
   color: black;
@@ -59,7 +60,9 @@ div.content {
 .cardsplace {
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
+
+  width: 60%;
+
   margin: 50px auto;
 }
 .onecard {
@@ -71,6 +74,28 @@ div.content {
   margin: 10px;
   width: 160px;
   height: 160px;
+  text-align: center;
+  line-height: 160px;
+  font-size: 100px;
+  color: black;
+}
+.green {
+  background-color: #e2fbd7;
+  -webkit-box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+  -moz-box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+  box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+}
+.red {
+  background-color: #f3aea8;
+  -webkit-box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+  -moz-box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+  box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+}
+.onecard:hover {
+  -webkit-box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+  -moz-box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+  box-shadow: 0px 12px 16px -9px rgba(66, 68, 90, 0.64);
+
 }
 .current {
   background-color: #e12b1b;

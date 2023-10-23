@@ -2,38 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import './styles.css';
 
-// const cards = [
-//   { id: 1, key: 'A' },
-//   { id: 2, key: 'U' },
-//   { id: 3, key: 'K' },
-//   { id: 4, key: 'R' },
-//   { id: 5, key: 'K' },
-//   { id: 6, key: 'U' },
-//   { id: 7, key: 'A' },
-//   { id: 8, key: 'R' },
-// ];
-
 const game_time = 120;
 const keys = ['A', 'U', 'K', 'R', '5', 'S', 'P', 'W', 'Q', 'F'];
+let counter = 0;
+let score = 0;
 
 export const MemoGame = () => {
   const [isGameStarted, setIsGameStarted] = useState(false);
+
   const [time, setTime] = useState(game_time);
-  const [moves, setMoves] = useState(2);
-  const [score, setScore] = useState(0);
-  const [isGameEnded, setIsGameEnded] = useState(false);
+  const [moves, setMoves] = useState(0);
   const [gameCards, setGameCards] = useState([]);
+  const [firstCard, setFirstCard] = useState(null);
+  const [secondCard, setSecondCard] = useState(null);
+  const [showScore, setShowScore] = useState(false);
 
   const handleStartGame = () => {
     setIsGameStarted(true);
+    // setIsGameEnded(false);
+
     setTime(game_time);
-    setScore(0);
-    setIsGameEnded(false);
+    setMoves(0);
+
+    setFirstCard(null);
+    setSecondCard(null);
+    counter = 0;
+    score = 0;
   };
   const handleStopGame = () => {
     setIsGameStarted(false);
-    setIsGameEnded(true);
-    // clearInterval(intervalId);
+
+    setFirstCard(null);
+    setSecondCard(null);
   };
 
   function shuffleArray(s) {
@@ -47,13 +47,55 @@ export const MemoGame = () => {
   const cardsGenerator = (num) => {
     const newArray = [];
     for (let i = 0; i < num / 2; i++) {
-      newArray.push({ id: i, key: keys[i] });
-      newArray.push({ id: 10 + i, key: keys[i] });
+      newArray.push({
+        id: i,
+        key: keys[i],
+        keyID: i,
+        isDone: false,
+      });
+      newArray.push({
+        id: 10 + i,
+        key: keys[i],
+        keyID: i,
+        isDone: false,
+      });
     }
     const shuffleCards = shuffleArray(newArray);
     setGameCards(shuffleCards);
-    // console.log(gameCards);
   };
+
+  const handleClick = (clickedCard) => {
+    firstCard ? setSecondCard(clickedCard) : setFirstCard(clickedCard);
+    counter++;
+    setMoves(counter);
+  };
+
+  useEffect(() => {
+    if (firstCard && secondCard) {
+      if (firstCard.keyID === secondCard.keyID) {
+        score++;
+        setGameCards(
+          gameCards.map((card) => {
+            const isDone =
+              (card.keyID === firstCard.keyID &&
+                firstCard.keyID === secondCard.keyID) ||
+              card.isDone;
+            return {
+              ...card,
+              isDone: isDone,
+            };
+          })
+        );
+        setFirstCard(null);
+        setSecondCard(null);
+      } else {
+        setTimeout(() => {
+          setFirstCard(null);
+          setSecondCard(null);
+        }, 300);
+      }
+    }
+  }, [firstCard, secondCard]);
 
   useEffect(() => {
     if (isGameStarted) {
@@ -67,10 +109,17 @@ export const MemoGame = () => {
 
   useEffect(() => {
     if (time === 0) {
-      // handleStopGame();
-      setIsGameEnded(true);
+      handleStopGame();
+      setShowScore(true);
     }
   }, [time]);
+
+  useEffect(() => {
+    if (gameCards.every((card) => card.isDone)) {
+      handleStopGame();
+      setShowScore(true);
+    }
+  }, [gameCards]);
 
   let min = Math.floor(time / 60);
   let sec = time % 60;
@@ -81,9 +130,11 @@ export const MemoGame = () => {
       <NavLink to="/exercise" className="backBtn">
         {'<'}Memo
       </NavLink>
-      {isGameEnded ? (
+
+      {showScore ? (
         <h2 className="memo">
-          Gratulacje! Twój wynik to: {score} par w czasie !
+          Gratulacje! Twój wynik to: {score} par w czasie {game_time - time}{' '}
+          sekund!
         </h2>
       ) : (
         <h2 className="memo">
@@ -118,7 +169,27 @@ export const MemoGame = () => {
           </div>
           <div className="cardsplace">
             {gameCards.map((el) => {
-              return <div className="onecard"></div>;
+              return (
+                <div
+                  onClick={() => handleClick(el)}
+                  key={el.id}
+                  // className="onecard"
+                  className={
+                    secondCard === el
+                      ? 'red onecard'
+                      : firstCard === el || el.isDone
+                      ? 'green onecard'
+                      : 'onecard'
+                  }
+                >
+                  <span>
+                    {(firstCard === el ||
+                      secondCard === el ||
+                      el.isDone === true) &&
+                      el.key}
+                  </span>
+                </div>
+              );
             })}
           </div>
         </div>
