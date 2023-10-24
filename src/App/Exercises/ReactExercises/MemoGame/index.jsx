@@ -19,7 +19,7 @@ export const MemoGame = () => {
 
   const handleStartGame = () => {
     setIsGameStarted(true);
-    // setIsGameEnded(false);
+    setShowScore(false);
 
     setTime(game_time);
     setMoves(0);
@@ -210,9 +210,6 @@ export const MemoGame = () => {
                   8 elementów
                 </button>
                 <button
-                  // onClick={() =>
-                  //   setGameCards(gameCards.map((card) => card * 3))
-                  // }
                   onClick={() => cardsGenerator(16)}
                   className={
                     gameCards.length === 16
@@ -223,9 +220,6 @@ export const MemoGame = () => {
                   16 elementów
                 </button>
                 <button
-                  // onClick={() =>
-                  //   setGameCards(gameCards.map((card) => card * 5))
-                  // }
                   onClick={() => cardsGenerator(20)}
                   className={
                     gameCards.length === 20

@@ -5,7 +5,7 @@ import { SubRouteExampleMetaData } from './SubRouteExample/router-data';
 import { EventsMetaData } from './Events/router-data';
 import { blockRouterMetaData as blockRouterMetaDataHitTheMole } from './HitTheMole/router-data';
 
-import { blockRouterMetaData as blockRouterMetaDataHitTheMole2 } from './HitTheMole2/router-data';
+// import { blockRouterMetaData as blockRouterMetaDataHitTheMole2 } from './HitTheMole2/router-data';
 import { blockRouterMetaData as blockRouterMetaDataMemoGame } from './MemoGame/router-data';
 
 export const blockRouterMetaData = [
@@ -13,7 +13,7 @@ export const blockRouterMetaData = [
   EventsMetaData,
   blockRouterMetaDataHitTheMole,
 
-  blockRouterMetaDataHitTheMole2,
+  // blockRouterMetaDataHitTheMole2,
   blockRouterMetaDataMemoGame,
 ];
 export const blockRouterData = getParsedRouterDataList(blockRouterMetaData);

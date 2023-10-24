@@ -1,0 +1,29 @@
+.button_memo {
+  margin-right: 20px;
+  padding: 12px 20px;
+  align-items: center;
+  font-family: Poppins, sans-serif;
+  color: white;
+  text-transform: none;
+  width: 200px;
+  margin-bottom: 0;
+  background-color: #23213d;
+  border: none;
+}
+.score {
+  background-color: #ebebeb;
+  color: black;
+}
+.stop {
+  background-color: #e12b1b;
+  text-transform: uppercase;
+}
+.start {
+  text-transform: uppercase;
+}
+.start:hover {
+  background-color: #e12b1b;
+}
+.current {
+  background-color: #e12b1b;
+}
