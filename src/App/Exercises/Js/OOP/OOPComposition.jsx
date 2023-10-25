@@ -53,15 +53,8 @@ export const OOPComposition = () => {
 
   const myCar = new Car();
   console.log(myCar.beepHorn());
-
-  const myCar2 = new Car();
-  console.log(myCar2.navigateGPS());
-
-  const myDirection = new SteeringWheel();
-  console.log(myDirection.turn('lewo'));
-
-  const myCar3 = new Car();
-  console.log(myCar3.turnSteeringWheel('lewo'));
+  console.log(myCar.navigateGPS());
+  console.log(myCar.turnSteeringWheel('lewo'));
 
   return <div>OOPComposition</div>;
 };

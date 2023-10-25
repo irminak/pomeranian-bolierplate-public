@@ -2,40 +2,35 @@ import React from 'react';
 
 export const OOPInheritance = () => {
   class Person {
-    constructor(name) {
-      this.name = name;
-    }
     introduce() {
-      console.log(`I am a Person and my name is ${this.name}`);
+      return `I am a Person`;
     }
   }
-  const person1 = new Person('Janusz');
+  const person1 = new Person();
   console.log(person1.introduce());
 
   class Builder extends Person {
     introduce() {
-      super.introduce();
-      console.log('I am also a builder');
+      return `${super.introduce()}  I am also a Builder`;
     }
   }
-  const person2 = new Builder('Grazyna');
+  const person2 = new Builder();
   console.log(person2.introduce());
 
   class Doctor extends Person {
     introduce() {
-      super.introduce();
-      console.log('I am also a doctor');
+      return `${super.introduce()}  I am also a Doctor`;
     }
   }
-  const person3 = new Doctor('Marek');
+  const person3 = new Doctor();
   console.log(person3.introduce());
 
   class Pediatrician extends Doctor {
     introduce() {
-      console.log(`I am a Pediatrician and my name is ${this.name}`);
+      return `I am also a Pediatician`;
     }
   }
-  const person4 = new Pediatrician('Parycja');
+  const person4 = new Pediatrician();
   console.log(person4.introduce());
 
   return <div>OOPInheritance</div>;
