@@ -13,6 +13,14 @@ export const SavedInput = () => {
 
   const handleClick = () => {
     if (value) {
+      const validation = users.some((user) => user.nick === value);
+      if (validation) {
+        alert('Wprowadź inne imię');
+        return;
+      } else if (value.length > 20) {
+        alert('Nazwa za długa');
+        return;
+      }
       const newUser = { nick: value, id: idCounter };
       setUsers([...users, newUser]);
       setValue('');
@@ -22,6 +30,7 @@ export const SavedInput = () => {
   const handleRemove = (id) => {
     const updatedUsers = users.filter((user) => user.id !== id);
     setUsers(updatedUsers);
+    console.log(idCounter);
   };
 
   useEffect(() => {

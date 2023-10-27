@@ -25,13 +25,14 @@
   border: 1px solid #c8cbd1;
   border-radius: 10px;
   min-height: 300px;
-  min-width: 300px;
+  width: 350px;
   margin-left: 100px;
 }
 .savedinput ul {
   list-style: none;
 }
 .savedinput li {
+  position: relative;
   margin: 30px;
   font-weight: bold;
   text-transform: uppercase;
@@ -39,4 +40,7 @@
 .savedinput li span {
   color: #fe3756;
   cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
