@@ -15,9 +15,14 @@ import { blockRouterMetaData as blockRouterMetaDataVanishString } from './Vanish
 import { blockRouterMetaData as blockRouterMetaDataTimer } from './Timer/router-data';
 import { blockRouterMetaData as blockRouterMetaDataJsSlidingBanner } from './JsSlidingBanner/router-data';
 import { blockRouterMetaData as blockRouterMetaDataJsAnimation } from './JsAnimation/router-data';
-
+import { blockRouterMetaData as blockRouterMetaDataTryCatch } from './TryCatch/router-data';
 import { blockRouterMetaData as blockRouterMetaDataArrayBasics } from './ArrayBasics/router-data';
 import { blockRouterMetaData as blockRouterMetaDataOOP } from './OOP/router-data';
+import { blockRouterMetaData as blockRouterMetaDataTryCatchExercise } from './TryCatchExercise/router-data';
+import { blockRouterMetaData as blockRouterMetaDataJsonStorage } from './JsonStorage/router-data';
+import { blockRouterMetaData as blockRouterMetaDataStorageJson } from './StorageJson/router-data';
+import { blockRouterMetaData as blockRouterMetaDataSavedInput } from './SavedInput/router-data';
+
 
 export const blockRouterMetaData = [
   blockRouterMetaDataJsVariables1,
@@ -39,5 +44,12 @@ export const blockRouterMetaData = [
   blockRouterMetaDataJsSlidingBanner,
   blockRouterMetaDataJsAnimation,
   blockRouterMetaDataOOP,
+  blockRouterMetaDataTryCatch,
+  blockRouterMetaDataTryCatchExercise,
+
+  blockRouterMetaDataJsonStorage,
+  blockRouterMetaDataStorageJson,
+  blockRouterMetaDataSavedInput,
+
 ];
 export const blockRouterData = getParsedRouterDataList(blockRouterMetaData);
