@@ -4,6 +4,7 @@ import { useState } from 'react';
 export const TryCatch = () => {
   const [error, setError] = useState(null);
   const [value, setValue] = useState(null);
+
   const divide = (a, b) => {
     if (b === 0) {
       throw new Error('Nie dziel przez 0');
