@@ -1,0 +1,46 @@
+.todo {
+  position: relative;
+  margin-right: 50%;
+  margin-bottom: 100px;
+}
+.todo h3 {
+  margin: 40px 10px;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+}
+.todo button {
+  transition: 0.2s;
+  border: none;
+}
+.todo .add_button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 5px;
+  font-size: 26px;
+  position: absolute;
+  line-height: 30px;
+  text-align: center;
+  right: 10px;
+  top: 5px;
+}
+p.error_message {
+  color: black;
+  margin-bottom: 50px;
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 700;
+}
+button.add {
+  min-width: 170px;
+  width: auto;
+  float: right;
+  padding: 10px 7%;
+  margin-right: 10px;
+  text-align: center;
+}
+.todo button:hover {
+  background-color: #23213d;
+}

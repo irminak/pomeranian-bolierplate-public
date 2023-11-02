@@ -1,0 +1,73 @@
+.list ul li {
+  position: relative;
+  overflow: hidden;
+  /* min-height: 160px; */
+  margin: 30px 10px;
+  padding: 10px 15% 10px 20px;
+  border-radius: 8px;
+  border-left: 5px solid #c8cbd1;
+  -webkit-box-shadow: 0px 0px 44px -13px rgba(200, 203, 209, 1);
+  -moz-box-shadow: 0px 0px 44px -13px rgba(200, 203, 209, 1);
+  box-shadow: 0px 0px 44px -13px rgba(200, 203, 209, 1);
+  background: white;
+}
+.list ul li.done {
+  background-color: #c8cbd1;
+  border-left: 5px solid #6b7280;
+}
+.task_icons {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+}
+.done .task_icons svg:nth-of-type(1) {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  transform: scale(1.5);
+}
+.task_icons svg {
+  margin: 0 5px;
+  cursor: pointer;
+}
+.task_icons svg:hover path {
+  stroke: #e12b1b;
+}
+.task_icons svg:nth-of-type(1):hover path {
+  fill: #e12b1b;
+  stroke: none;
+}
+li.done .task_icons svg:nth-of-type(1) path {
+  fill: #07c23b;
+  stroke: none;
+}
+.list h2 {
+  padding: 16px 0 8px;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  color: #23213d;
+  font-size: 18px;
+  line-height: 18px;
+}
+.list address,
+.list time {
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 400;
+  letter-spacing: normal;
+  font-style: normal;
+}
+.list p.task {
+  margin: 10px 0;
+  font-family: Poppins, sans-serif;
+  color: #999999;
+  font-weight: 400;
+  font-size: 14px;
+}
+.list .done h2,
+.list .done address,
+.list .done.time,
+.list .done p.task {
+  color: #6b7280;
+}

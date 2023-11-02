@@ -1,0 +1,57 @@
+/* <form>
+      <div>
+        <label htmlFor="title">Tytuł</label>
+        <input id="title" type="text" />
+      </div>
+      <div>
+        <label htmlFor="task">Treść</label>
+        <input id="task" type="text" />
+      </div>
+      <button>Zapisz</button>
+    </form> */
+.todo form {
+  margin: 60px 10px;
+}
+
+.todo form label {
+  margin-bottom: 10px;
+  font-family: Poppiins, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+}
+.todo form div {
+  display: flex;
+  flex-direction: column;
+}
+.todo form input,
+.todo form textarea {
+  width: 85%;
+  padding: 13px 16px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+  border: 1px solid #c8cbd1;
+  font-family: Poppins, sans-serif;
+  color: #999;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 32px;
+}
+.todo form textarea {
+  min-height: 160px;
+}
+.todo form div:nth-last-of-type(1) {
+  padding-right: 15%;
+  flex-direction: row;
+  justify-content: end;
+  gap: 30px;
+}
+.todo form button:nth-of-type(1) {
+  background-color: #23213d;
+}
+.todo form button:nth-of-type(1):hover {
+  background-color: #999;
+}
+.todo form button {
+  width: 170px;
+}
