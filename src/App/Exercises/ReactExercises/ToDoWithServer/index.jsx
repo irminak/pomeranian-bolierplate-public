@@ -35,7 +35,7 @@ export const ToDoWithServer = () => {
       {addTask ? (
         <>
           <h3>Edycja zadania.</h3>
-          <AddTask handleBack={setAddTask} />
+          <AddTask handleBack={setAddTask} updateData={setData} />
         </>
       ) : (
         <>
@@ -43,7 +43,7 @@ export const ToDoWithServer = () => {
           <button className="add_button" onClick={() => setAddTask(true)}>
             +
           </button>
-          <TasksList data={data} />
+          <TasksList data={data} updateData={setData} />
           {isError && (
             <p className="error_message">
               Przepraszamy. Nie udało się pobrać listy zadań.
