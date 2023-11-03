@@ -15,6 +15,7 @@ const TasksList = (props) => {
     return `${day}.${month}.${year}, ${hours}:${minutes}`;
   }
 
+
   const handleRemove = () => {
     props.data.map((todo) => {
       fetch(`http://localhost:3333/api/todo/${todo.id}`, {
@@ -81,6 +82,7 @@ const TasksList = (props) => {
   //   });
   // };
 
+
   return (
     <div className="list">
       <ul>
@@ -90,14 +92,17 @@ const TasksList = (props) => {
             author={todo.author}
             note={todo.note}
             addDate={formatDate(todo.createdAt)}
+
             removeTask={handleRemove}
             // editTas={handleEdit}
             markAsChecked={handleCheck}
             isDone={todo.isDone}
+
           />
         ))}
       </ul>
     </div>
   );
 };
+
 export default TasksList;

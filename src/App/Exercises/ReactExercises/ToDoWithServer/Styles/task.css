@@ -17,6 +17,7 @@
 }
 .task_icons {
   position: absolute;
+
   display: flex;
   top: 30px;
   right: 20px;
@@ -26,11 +27,13 @@
   cursor: pointer;
 }
 .done .task_icons div.icon:nth-of-type(1) svg {
+
   position: absolute;
   top: 60px;
   right: 20px;
   transform: scale(1.5);
 }
+
 
 .task_icons div.icon:hover svg path {
   stroke: #e12b1b;
@@ -40,6 +43,7 @@
   stroke: none;
 }
 li.done .task_icons div.icon:nth-of-type(1) svg path {
+
   fill: #07c23b;
   stroke: none;
 }

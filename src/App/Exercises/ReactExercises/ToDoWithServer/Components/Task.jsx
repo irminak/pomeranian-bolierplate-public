@@ -6,6 +6,7 @@ import { DoneTodoIcon } from '../../../../Components/Icons/DoneTodoIcon';
 
 const Task = (props) => {
   return (
+
     <li className={props.isDone ? 'done' : ''}>
       <div className="task_icons">
         <div className="icon" onClick={props.markAsChecked}>
@@ -17,6 +18,7 @@ const Task = (props) => {
         <div className="icon" onClick={props.removeTask}>
           <TrashTodoIcon />
         </div>
+
       </div>
       <h2>{props.title}</h2>
       <address>{props.author}</address>
