@@ -6,7 +6,9 @@ const INITIAL_STATE = {
   task: '',
 };
 
-const AddTask = ({ handleBack }) => {
+
+const AddTask = ({ handleBack, updateData }) => {
+
   const [newTask, setNewTask] = useState(INITIAL_STATE);
 
   const handleChange = (e) => {
@@ -22,7 +24,28 @@ const AddTask = ({ handleBack }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setNewTask(INITIAL_STATE);
+    fetch(`http://localhost:3333/api/todo`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: newTask.title,
+        createdAt: new Date(),
+        isDone: false,
+        note: newTask.task,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        updateData(data);
+        console.log('Response from server:', data);
+        setNewTask(INITIAL_STATE);
+      })
+      .catch((err) => {
+        console.log('error');
+      });
+
   };
 
   return (

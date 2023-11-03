@@ -17,27 +17,33 @@
 }
 .task_icons {
   position: absolute;
+
+  display: flex;
   top: 30px;
   right: 20px;
 }
-.done .task_icons svg:nth-of-type(1) {
+.task_icons div.icon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.done .task_icons div.icon:nth-of-type(1) svg {
+
   position: absolute;
   top: 60px;
   right: 20px;
   transform: scale(1.5);
 }
-.task_icons svg {
-  margin: 0 5px;
-  cursor: pointer;
-}
-.task_icons svg:hover path {
+
+
+.task_icons div.icon:hover svg path {
   stroke: #e12b1b;
 }
-.task_icons svg:nth-of-type(1):hover path {
+.task_icons div.icon:nth-of-type(1):hover svg path {
   fill: #e12b1b;
   stroke: none;
 }
-li.done .task_icons svg:nth-of-type(1) path {
+li.done .task_icons div.icon:nth-of-type(1) svg path {
+
   fill: #07c23b;
   stroke: none;
 }
