@@ -6,9 +6,7 @@ const INITIAL_STATE = {
   task: '',
 };
 
-
 const AddTask = ({ handleBack, updateData }) => {
-
   const [newTask, setNewTask] = useState(INITIAL_STATE);
 
   const handleChange = (e) => {
@@ -45,7 +43,6 @@ const AddTask = ({ handleBack, updateData }) => {
       .catch((err) => {
         console.log('error');
       });
-
   };
 
   return (
