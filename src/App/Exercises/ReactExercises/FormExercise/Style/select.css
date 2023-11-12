@@ -1,0 +1,58 @@
+section fieldset div.select {
+  background-color: #f4f5f7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* background-color: hotpink; */
+}
+section fieldset div.select select[aria-invalid='true'] {
+  border-color: red;
+}
+
+div.select label {
+  margin-bottom: 20px;
+}
+div.select select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 0 13px;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  color: #999;
+}
+div.customSelect {
+  /* grid-template-areas: 'select'; */
+  position: relative;
+  width: 70%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #c8cbd1;
+  background: #fff;
+  appearance: none;
+  outline: none;
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  cursor: pointer;
+  appearance: none;
+}
+
+div.customSelect::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 5px;
+  top: 50%;
+  right: 5%;
+  background-color: #222;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
