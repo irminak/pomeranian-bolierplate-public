@@ -1,0 +1,69 @@
+section fieldset div.radio {
+  background-color: #f4f5f7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* background-color: hotpink; */
+}
+div.radio label:nth-child(1) {
+  margin-bottom: 20px;
+}
+
+div.radio div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+div.radio div:nth-last-of-type(1) {
+  margin-bottom: 0;
+}
+div.radio div input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #f4f5f7;
+  padding: 0.5em;
+  display: grid;
+  place-content: center;
+  font: inherit;
+  height: 2em;
+  width: 2em;
+  margin-right: 20px;
+  margin-bottom: 0;
+  border: 1px solid #999;
+  border-radius: 50%;
+  transform: translateY(-0.25em);
+  outline: none;
+  cursor: pointer;
+}
+
+div.radio div input::before {
+  content: '';
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: #fe3756;
+}
+
+div.radio div input:checked::before {
+  transform: scale(1);
+  border-color: #fe3756;
+}
+
+div.radio div input:checked {
+  border-color: #fe3756;
+  outline: none;
+}
+
+div.radio div label {
+  color: #222;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+section fieldset div.radio label[aria-invalid='true'] {
+  color: red;
+}

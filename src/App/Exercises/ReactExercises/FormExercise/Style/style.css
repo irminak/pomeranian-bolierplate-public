@@ -1,0 +1,97 @@
+div.order-wrapper {
+  width: 800px;
+  overflow: hidden;
+  margin: 30px 20px;
+}
+
+.order-wrapper form {
+  display: flex;
+  flex-direction: column;
+  background: #f4f5f7;
+  padding: 30px 60px;
+  width: 100%;
+  margin-top: 50px;
+}
+.order-wrapper form section {
+  margin-bottom: 30px;
+}
+.order-wrapper form section:hover {
+  background-color: #f4f5f7;
+  color: #222;
+}
+.order-wrapper form section:hover fieldset {
+  color: #222;
+}
+.order-wrapper form section:hover label {
+  color: #222;
+}
+.order-wrapper form section:hover legend {
+  color: #222;
+}
+.order-wrapper form section:hover select {
+  color: #999;
+}
+
+.order-wrapper form section:hover input {
+  color: #999;
+}
+.order-wrapper form section:hover p.error {
+  color: #e12b1b;
+}
+
+section h2.order-section-title {
+  color: #222;
+  font-family: Poppins, sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1rem;
+  margin: 30px 0 20px;
+  text-transform: uppercase;
+}
+section fieldset {
+  border: none;
+  background-color: #f4f5f7;
+  margin-top: 30px;
+}
+section fieldset label,
+section fieldset legend {
+  color: #222;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+}
+section fieldset legend {
+  margin-bottom: 20px;
+}
+
+section fieldset div.field {
+  background-color: #f4f5f7;
+}
+.order-wrapper form p.error {
+  color: #e12b1b;
+  font-family: Poppins, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.order-wrapper form input.submit_button {
+  border-radius: 8px;
+  border: 1px solid #fe3756;
+  background: #fe3756;
+  color: #fff;
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 400px;
+  margin: 30px auto 50px;
+  cursor: pointer;
+  height: 48px;
+  line-height: 48px;
+  padding: 0;
+}

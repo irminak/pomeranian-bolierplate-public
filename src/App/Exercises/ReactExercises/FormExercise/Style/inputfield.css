@@ -1,0 +1,43 @@
+section fieldset div.text {
+  display: flex;
+  flex-direction: column;
+  /* background-color: hotpink; */
+  align-items: flex-start;
+}
+section fieldset div.text label {
+  margin-bottom: 10px;
+}
+section fieldset div.text input {
+  width: 70%;
+  margin-bottom: 0;
+  outline: none;
+}
+section fieldset div.text input:focus {
+  color: #222;
+  border-color: #222;
+}
+section fieldset div.text input[aria-invalid='true'] {
+  border-color: red;
+}
+
+section fieldset div.area textarea {
+  color: #999;
+  width: 70%;
+  height: 200px;
+  padding: 13px 16px;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #c8cbd1;
+  background: #fff;
+  color: #999;
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  outline: none;
+}
+section fieldset div.area textarea:focus {
+  color: #222;
+  border-color: #222;
+}
