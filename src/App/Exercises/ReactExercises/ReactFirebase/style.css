@@ -1,0 +1,22 @@
+.formform {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.formform h2 {
+  margin: 20px 0;
+}
+.formform input:nth-of-type(1) {
+  margin-bottom: 10px;
+}
+.formform .buttons {
+  display: flex;
+  margin: 0 auto;
+}
+.formform .buttons button {
+  width: 300px;
+}
+.formform .buttons button:nth-of-type(1) {
+  margin-right: 10%;
+}
